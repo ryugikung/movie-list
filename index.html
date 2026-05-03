@@ -17,9 +17,6 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .site-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,6vw,4rem);letter-spacing:-0.02em;color:var(--text);margin-bottom:0.4rem}
 .site-title span{color:var(--gold)}
 .site-sub{font-size:12px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
-.header-btns{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px}
-.header-btn{background:transparent;border:1px solid var(--border2);color:var(--text2);padding:5px 14px;border-radius:20px;cursor:pointer;font-size:11px;font-family:'DM Sans',sans-serif;transition:all 0.2s}
-.header-btn:hover{border-color:var(--gold);color:var(--gold)}
 .sync-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px}
 .sync-dot{width:7px;height:7px;border-radius:50%;background:var(--text3)}
 .sync-dot.live{background:var(--green);box-shadow:0 0 6px var(--green);animation:pg 2s infinite}
@@ -34,17 +31,30 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .spinner{width:34px;height:34px;border:2px solid var(--border2);border-top-color:var(--gold);border-radius:50%;animation:spin 0.7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* NAV PANEL */
+.nav-panel{position:fixed;top:0;left:0;width:280px;max-width:92vw;height:100%;background:var(--bg2);border-right:1px solid var(--border2);z-index:201;transform:translateX(-100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);overflow-y:auto;display:flex;flex-direction:column}
+.nav-panel.open{transform:translateX(0)}
+.nav-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 14px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--bg3);border:1px solid var(--border);color:var(--text2);border-radius:8px;cursor:pointer;transition:all 0.15s}
+.nav-item:hover{border-color:var(--gold);color:var(--gold)}
+.menu-btn{background:transparent;border:1px solid var(--border2);color:var(--text2);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-family:'DM Sans',sans-serif}
+.menu-btn:hover{border-color:var(--gold);color:var(--gold)}
+.patch-entry{display:flex;flex-direction:column;gap:3px;padding:8px 10px;border-radius:8px;background:var(--bg3);border:1px solid var(--border)}
+.patch-ver{font-size:10px;font-weight:500;color:var(--gold2);letter-spacing:1px}
+.patch-notes{font-size:11px;color:var(--text3);line-height:1.5}
+
 /* PANELS */
 .panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .panel-overlay.on{opacity:1;pointer-events:all}
-.settings-panel{position:fixed;top:0;right:0;width:320px;max-width:92vw;height:100%;background:var(--bg2);border-left:1px solid var(--border2);z-index:201;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);overflow-y:auto;display:flex;flex-direction:column}
+.settings-panel{position:fixed;top:0;left:0;width:320px;max-width:92vw;height:100%;background:var(--bg2);border-right:1px solid var(--border2);z-index:201;transform:translateX(-100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);overflow-y:auto;display:flex;flex-direction:column}
 .settings-panel.open{transform:translateX(0)}
 .book-panel{position:fixed;top:0;left:0;width:460px;max-width:96vw;height:100%;background:var(--bg2);border-right:1px solid var(--border2);z-index:201;transform:translateX(-100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);overflow-y:auto;display:flex;flex-direction:column}
 .book-panel.open{transform:translateX(0)}
-.watchlist-panel{position:fixed;top:0;right:0;width:400px;max-width:96vw;height:100%;background:var(--bg2);border-left:1px solid var(--border2);z-index:201;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);overflow-y:auto;display:flex;flex-direction:column}
+.watchlist-panel{position:fixed;top:0;left:0;width:400px;max-width:96vw;height:100%;background:var(--bg2);border-right:1px solid var(--border2);z-index:201;transform:translateX(-100%);transition:transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94);overflow-y:auto;display:flex;flex-direction:column}
 .watchlist-panel.open{transform:translateX(0)}
-.panel-head{padding:1.5rem 1.25rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg2);z-index:1}
+.panel-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;position:sticky;top:0;background:var(--bg2);z-index:1}
 .panel-head h2{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text);font-weight:400}
+.panel-back{background:none;border:none;cursor:pointer;color:var(--text3);font-size:12px;padding:4px 8px;border-radius:6px;transition:color 0.15s;font-family:'DM Sans',sans-serif;white-space:nowrap;flex-shrink:0}
+.panel-back:hover{color:var(--gold)}
 .panel-head-sub{font-size:11px;color:var(--text3);margin-top:2px}
 .panel-close{background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px;padding:4px 8px;border-radius:6px;transition:color 0.15s;font-family:'DM Sans',sans-serif}
 .panel-close:hover{color:var(--text)}
@@ -77,8 +87,9 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
 /* TICKET BOOK */
 .book-empty{text-align:center;padding:3rem 1rem;color:var(--text3);font-size:13px}
-.book-year{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:1rem 0 0.5rem;border-top:1px solid var(--border);margin-top:1rem}
+.book-year{font-size:14px;font-family:'DM Serif Display',serif;color:var(--text);padding:1rem 0 0.4rem;border-top:1px solid var(--border);margin-top:1rem}
 .book-year:first-child{border-top:none;margin-top:0;padding-top:0}
+.book-month{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text3);padding:0.6rem 0 0.4rem;margin-left:2px}
 .stub-ticket{display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed var(--border);align-items:flex-start}
 .stub-poster{width:44px;height:66px;border-radius:4px;object-fit:cover;flex-shrink:0;border:0.5px solid var(--border2)}
 .stub-poster-ph{width:44px;height:66px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:0.5px solid var(--border2)}
@@ -179,22 +190,18 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 .stub.show{opacity:1}
 .stub-lbl{font-size:9px;color:#999;letter-spacing:1px;text-transform:uppercase}
 
-/* ADD SECTION (top) */
-.add-section-top{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem}
-.add-section-top h3{font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:400;letter-spacing:1px;text-transform:uppercase}
-.add-row{display:flex;gap:8px;flex-wrap:wrap}
-#add-title{flex:1;min-width:140px;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
-#add-title::placeholder{color:var(--text3)}
+.sort-opt{display:block;width:100%;text-align:left;padding:9px 14px;font-size:12px;font-family:'DM Sans',sans-serif;background:transparent;border:none;color:var(--text2);cursor:pointer;transition:background 0.15s,color 0.15s;border-bottom:1px solid var(--border)}
+.sort-opt:last-child{border-bottom:none}
+.sort-opt:hover{background:var(--bg3);color:var(--text)}
+.sort-opt.active{color:var(--gold);font-weight:500}
 
 /* TOP BAR */
 .top-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;align-items:center}
 #search{flex:1;min-width:150px;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
 #search:focus{border-color:var(--border2)}
 #search::placeholder{color:var(--text3)}
-.sort-btns{display:flex;gap:5px;flex-wrap:wrap}
 .sort-btn{font-size:11px;padding:6px 12px;border-radius:6px;cursor:pointer;background:transparent;border:1px solid var(--border);color:var(--text2);font-family:'DM Sans',sans-serif;transition:all 0.15s}
 .sort-btn:hover{border-color:var(--border2);color:var(--text)}
-.sort-btn.active{background:var(--bg3);border-color:var(--border2);color:var(--text);font-weight:500}
 .count-badge{font-size:11px;color:var(--text3);padding:5px 12px;background:var(--bg2);border-radius:20px;border:1px solid var(--border);white-space:nowrap}
 
 /* FILTERS */
@@ -270,7 +277,11 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
 <!-- SETTINGS PANEL -->
 <div class="settings-panel" id="settings-panel">
-  <div class="panel-head"><h2>settings</h2><button class="panel-close" id="settings-close">✕</button></div>
+  <div class="panel-head">
+    <button class="panel-back" onclick="closeAllPanels();openPanel('nav-panel')">← back</button>
+    <h2>settings</h2>
+    <button class="panel-close" id="settings-close">✕</button>
+  </div>
   <div class="panel-body">
     <div class="panel-section"><h3>color palette</h3><div class="palette-grid" id="palette-grid"></div></div>
   </div>
@@ -278,13 +289,21 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 
 <!-- TICKET BOOK PANEL -->
 <div class="book-panel" id="book-panel">
-  <div class="panel-head"><div><h2>ticket book</h2><div class="panel-head-sub" id="book-sub">your watched history</div></div><button class="panel-close" id="book-close">✕</button></div>
+  <div class="panel-head">
+    <button class="panel-back" onclick="closeAllPanels();openPanel('nav-panel')">← back</button>
+    <div><h2>ticket book</h2><div class="panel-head-sub" id="book-sub">your watched history</div></div>
+    <button class="panel-close" id="book-close">✕</button>
+  </div>
   <div style="padding:1.25rem;flex:1" id="book-body"><div class="book-empty">no watched movies yet</div></div>
 </div>
 
 <!-- WATCHLIST PANEL -->
 <div class="watchlist-panel" id="watchlist-panel">
-  <div class="panel-head"><div><h2>watchlist</h2><div class="panel-head-sub" id="wl-sub">movies you want to watch next</div></div><button class="panel-close" id="watchlist-close">✕</button></div>
+  <div class="panel-head">
+    <button class="panel-back" onclick="closeAllPanels();openPanel('nav-panel')">← back</button>
+    <div><h2>watchlist</h2><div class="panel-head-sub" id="wl-sub">movies you want to watch next</div></div>
+    <button class="panel-close" id="watchlist-close">✕</button>
+  </div>
   <div style="padding:1.25rem;flex:1" id="wl-body"><div class="wl-empty">no movies in your watchlist yet — click ★ on any movie to add it</div></div>
 </div>
 
@@ -311,29 +330,50 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   </div>
 </div>
 
+<!-- NAV PANEL (left slide, contains ticket book / watchlist / settings) -->
+<div class="nav-panel" id="nav-panel">
+  <div class="panel-head">
+    <h2>menu</h2>
+    <button class="panel-close" id="nav-close">✕</button>
+  </div>
+  <div style="padding:1.25rem;display:flex;flex-direction:column;gap:8px">
+    <button class="nav-item" id="nav-book">🎟 ticket book</button>
+    <button class="nav-item" id="nav-wl">★ watchlist</button>
+    <button class="nav-item" id="nav-settings">⚙ settings</button>
+    <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border)">
+      <div style="font-size:11px;color:var(--text3);margin-bottom:6px;letter-spacing:1px;text-transform:uppercase">patch notes</div>
+      <div style="display:flex;flex-direction:column;gap:6px;max-height:420px;overflow-y:auto">
+        <div class="patch-entry"><div class="patch-ver">v11.2</div><div class="patch-notes">Back button added to all panels — returns to the nav menu without closing everything.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v11.1</div><div class="patch-notes">All panels now slide from the left. Date editor in ticket book auto-closes after picking a date. Watchlist updates instantly after marking a movie watched.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v11.0</div><div class="patch-notes">Nav menu panel replacing header buttons. Month + year grouping in ticket book. Version display and patch notes.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v10.0</div><div class="patch-notes">＋ add pill next to search bar. Sort collapsed into compact dropdown. Adding a movie no longer changes sort order.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v9.0</div><div class="patch-notes">Pencil editor on ticket book stubs — date picker and unwatch in one expandable panel.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v8.0</div><div class="patch-notes">Live TMDb search dropdown when adding movies. Real posters, year and IMDb shown per result. Already-in-list note shown inline.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v7.0</div><div class="patch-notes">Spring blossom palette added. Watchlist with ★ flag, gold border highlight, drag-to-reorder side panel. Add movie moved to top.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v6.0</div><div class="patch-notes">7 muted colour palettes in settings panel. Ticket book timeline grouped by year. Watched date picker on marking watched.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v5.0</div><div class="patch-notes">Supabase real-time sync across all users. Posters cached in DB. Fixed search, sort and filter scoping bugs.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v4.0</div><div class="patch-notes">Switched to TMDb API for posters. Parallel batch loading. Half-star ratings. Packaged as standalone HTML file.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v3.0</div><div class="patch-notes">Ticket machine random picker with print animation. IMDb score and Letterboxd links on ticket. Sort by top rated.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v2.0</div><div class="patch-notes">Watched/unwatched toggle. Genre tags. Star ratings. Platform and notes fields. Import/export with metadata.</div></div>
+        <div class="patch-entry"><div class="patch-ver">v1.0</div><div class="patch-notes">Initial movie list. Sort, search, filter. Random picker. Add, remove, import, export.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <header class="site-header">
+  <div style="position:absolute;top:1rem;left:1.25rem">
+    <button class="menu-btn" id="menu-btn" title="menu">☰</button>
+  </div>
   <h1 class="site-title">our <span>movie</span> list</h1>
   <p class="site-sub">a curated watchlist</p>
-  <div class="header-btns">
-    <button class="header-btn" id="book-open-btn">🎟 ticket book</button>
-    <button class="header-btn" id="wl-open-btn">★ watchlist</button>
-    <button class="header-btn" id="settings-open-btn">⚙ settings</button>
-  </div>
   <div class="sync-row"><div class="sync-dot" id="sync-dot"></div><span id="sync-txt">connecting...</span></div>
+  <div style="margin-top:6px;font-size:10px;color:var(--text3);letter-spacing:1px">v11.2</div>
 </header>
 
 <div class="container">
 
-  <!-- ADD MOVIE (top) -->
-  <div class="add-section-top">
-    <h3>add a movie</h3>
-    <div class="add-row" style="position:relative">
-      <div style="flex:1;position:relative">
-        <input type="text" id="add-title" placeholder="search for a movie..." autocomplete="off"/>
-        <div id="add-dropdown" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;z-index:100;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.4);max-height:360px;overflow-y:auto"></div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- MACHINE -->
   <div class="machine-wrap">
@@ -376,13 +416,26 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
   <!-- TOP BAR -->
   <div class="top-bar">
     <input type="text" id="search" placeholder="search movies..."/>
-    <div class="sort-btns">
-      <button class="sort-btn active" data-sort="az">A → Z</button>
-      <button class="sort-btn" data-sort="za">Z → A</button>
-      <button class="sort-btn" data-sort="rating">top rated</button>
-      <button class="sort-btn" data-sort="added">recently added</button>
+    <button class="sort-btn" id="add-toggle-btn" style="border-color:var(--gold);color:var(--gold);white-space:nowrap" title="add a movie">＋ add</button>
+    <div style="position:relative">
+      <button class="sort-btn" id="sort-toggle-btn">sort: <span id="sort-label">A → Z</span> ▾</button>
+      <div id="sort-dropdown" style="display:none;position:absolute;top:calc(100% + 4px);right:0;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;z-index:100;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.4);min-width:150px">
+        <button class="sort-opt active" data-sort="az">A → Z</button>
+        <button class="sort-opt" data-sort="za">Z → A</button>
+        <button class="sort-opt" data-sort="rating">top rated</button>
+        <button class="sort-opt" data-sort="added">recently added</button>
+      </div>
     </div>
     <span class="count-badge" id="count-badge">0 movies</span>
+  </div>
+
+  <!-- INLINE ADD ROW (hidden until + is clicked) -->
+  <div id="add-inline" style="display:none;margin-bottom:1rem;position:relative">
+    <div style="position:relative">
+      <input type="text" id="add-title" placeholder="search for a movie to add..." autocomplete="off"
+        style="width:100%;background:var(--bg2);border:1px solid var(--gold);color:var(--text);padding:9px 14px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color 0.2s"/>
+      <div id="add-dropdown" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;z-index:100;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.5);max-height:360px;overflow-y:auto"></div>
+    </div>
   </div>
 
   <!-- FILTER BAR -->
@@ -466,25 +519,52 @@ function buildPaletteGrid(){
 
 // ── PANELS ─────────────────────────────────────────────
 function openPanel(id){$('overlay').classList.add('on');$(id).classList.add('open');}
-function closeAllPanels(){$('overlay').classList.remove('on');['settings-panel','book-panel','watchlist-panel'].forEach(id=>$(id).classList.remove('open'));}
+function closeAllPanels(){$('overlay').classList.remove('on');['nav-panel','settings-panel','book-panel','watchlist-panel'].forEach(id=>$(id).classList.remove('open'));}
 $('overlay').addEventListener('click',closeAllPanels);
+$('nav-close').addEventListener('click',closeAllPanels);
 $('settings-close').addEventListener('click',closeAllPanels);
 $('book-close').addEventListener('click',closeAllPanels);
 $('watchlist-close').addEventListener('click',closeAllPanels);
-$('settings-open-btn').addEventListener('click',()=>openPanel('settings-panel'));
-$('book-open-btn').addEventListener('click',()=>{renderBookPanel();openPanel('book-panel');});
-$('wl-open-btn').addEventListener('click',()=>{renderWatchlistPanel();openPanel('watchlist-panel');});
+
+$('menu-btn').addEventListener('click',()=>openPanel('nav-panel'));
+$('nav-book').addEventListener('click',()=>{closeAllPanels();renderBookPanel();openPanel('book-panel');});
+$('nav-wl').addEventListener('click',()=>{closeAllPanels();renderWatchlistPanel();openPanel('watchlist-panel');});
+$('nav-settings').addEventListener('click',()=>{closeAllPanels();openPanel('settings-panel');});
 
 // ── TICKET BOOK ────────────────────────────────────────
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 function renderBookPanel(){
   const watched=movies.filter(m=>m.watched).sort((a,b)=>{if(!a.watched_date&&!b.watched_date)return 0;if(!a.watched_date)return 1;if(!b.watched_date)return-1;return new Date(b.watched_date)-new Date(a.watched_date);});
   $('book-sub').textContent=watched.length+' movies watched';
   if(!watched.length){$('book-body').innerHTML='<div class="book-empty">no watched movies yet — mark something as watched to add it here</div>';return;}
-  const byYear={};
-  watched.forEach(m=>{const y=m.watched_date?new Date(m.watched_date+'T00:00:00').getFullYear():'undated';if(!byYear[y])byYear[y]=[];byYear[y].push(m);});
-  const years=Object.keys(byYear).sort((a,b)=>b-a);
-  $('book-body').innerHTML=years.map(y=>`<div class="book-year">${y}</div>${byYear[y].map(m=>{const meta=cache[ck(m.title)];const src=m.poster||(meta&&meta.poster)||null;const ph=src?`<img class="stub-poster" src="${esc(src)}" onerror="this.style.display='none'">`:`<div class="stub-poster-ph">🎬</div>`;const stars=m.rating?'★'.repeat(Math.floor(m.rating))+(m.rating%1?'½':''):'';const iv=m.imdb||(meta&&meta.imdb)||null;return`<div class="stub-ticket" data-id="${m.id}">${ph}<div class="stub-info"><div class="stub-title">${esc(m.title)}</div><div class="stub-date">${m.watched_date?fmtDate(m.watched_date):'date unknown'}</div><div class="stub-meta">${m.rating?`<span class="stub-rating">${stars} ${m.rating}/5</span>`:''}${iv?`<span class="stub-imdb">IMDb ${iv}</span>`:''}</div>${m.note?`<div class="stub-note">"${esc(m.note)}"</div>`:''}${m.tags.length?`<div class="stub-tags">${m.tags.map(t=>`<span class="stub-tag">${esc(t)}</span>`).join('')}</div>`:''}<div class="stub-edit-panel" id="sep-${m.id}" style="display:none;margin-top:8px;padding:10px;border:1px solid var(--border2);border-radius:8px;background:var(--bg);flex-direction:column;gap:8px"><label style="font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase">watched date</label><input type="date" class="stub-date-edit" data-id="${m.id}" value="${m.watched_date||''}" style="font-size:12px;padding:5px 8px;border-radius:6px;border:1px solid var(--border2);background:var(--bg2);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;color-scheme:dark;width:100%"><button class="stub-unwatch" data-id="${m.id}" style="width:100%;text-align:center;padding:6px">mark as unwatched</button></div></div><button class="stub-edit-btn" data-id="${m.id}" title="edit">✎</button></div>`;}).join('')}`).join('');
-  // restore open editors
+
+  // Group by year → month
+  const byYearMonth={};
+  watched.forEach(m=>{
+    let y='undated',mo='undated';
+    if(m.watched_date){
+      const d=new Date(m.watched_date+'T00:00:00');
+      y=d.getFullYear();mo=d.getMonth();
+    }
+    if(!byYearMonth[y])byYearMonth[y]={};
+    if(!byYearMonth[y][mo])byYearMonth[y][mo]=[];
+    byYearMonth[y][mo].push(m);
+  });
+
+  const years=Object.keys(byYearMonth).sort((a,b)=>b-a);
+  $('book-body').innerHTML=years.map(y=>{
+    const months=Object.keys(byYearMonth[y]).sort((a,b)=>b-a);
+    return`<div class="book-year">${y}</div>`+months.map(mo=>{
+      const label=mo==='undated'?'unknown date':MONTHS[parseInt(mo)];
+      return`<div class="book-month">${label}</div>`+byYearMonth[y][mo].map(m=>{
+        const meta=cache[ck(m.title)];const src=m.poster||(meta&&meta.poster)||null;
+        const ph=src?`<img class="stub-poster" src="${esc(src)}" onerror="this.style.display='none'">`:`<div class="stub-poster-ph">🎬</div>`;
+        const stars=m.rating?'★'.repeat(Math.floor(m.rating))+(m.rating%1?'½':''):'';
+        const iv=m.imdb||(meta&&meta.imdb)||null;
+        return`<div class="stub-ticket" data-id="${m.id}">${ph}<div class="stub-info"><div class="stub-title">${esc(m.title)}</div><div class="stub-date">${m.watched_date?fmtDate(m.watched_date):'date unknown'}</div><div class="stub-meta">${m.rating?`<span class="stub-rating">${stars} ${m.rating}/5</span>`:''}${iv?`<span class="stub-imdb">IMDb ${iv}</span>`:''}</div>${m.note?`<div class="stub-note">"${esc(m.note)}"</div>`:''}${m.tags.length?`<div class="stub-tags">${m.tags.map(t=>`<span class="stub-tag">${esc(t)}</span>`).join('')}</div>`:''}<div class="stub-edit-panel" id="sep-${m.id}" style="display:none;margin-top:8px;padding:10px;border:1px solid var(--border2);border-radius:8px;background:var(--bg);flex-direction:column;gap:8px"><label style="font-size:10px;color:var(--text3);letter-spacing:1px;text-transform:uppercase">watched date</label><input type="date" class="stub-date-edit" data-id="${m.id}" value="${m.watched_date||''}" style="font-size:12px;padding:5px 8px;border-radius:6px;border:1px solid var(--border2);background:var(--bg2);color:var(--text);font-family:'DM Sans',sans-serif;outline:none;color-scheme:dark;width:100%"><button class="stub-unwatch" data-id="${m.id}" style="width:100%;text-align:center;padding:6px">mark as unwatched</button></div></div><button class="stub-edit-btn" data-id="${m.id}" title="edit">✎</button></div>`;
+      }).join('');
+    }).join('');
+  }).join('');
   bookOpenEditors.forEach(id=>{const p=$('sep-'+id);if(p){p.style.display='flex';const btn=document.querySelector(`.stub-edit-btn[data-id="${id}"]`);if(btn)btn.style.color='var(--gold)';}});
 }
 
@@ -516,9 +596,14 @@ $('book-body').addEventListener('change',async e=>{
   const id=parseInt(inp.dataset.id);const m=movies.find(x=>x.id===id);if(!m)return;
   m.watched_date=inp.value;
   render();
-  // update the displayed date without full re-render
+  // auto-close the edit panel
+  const panel=$('sep-'+id);
+  if(panel){panel.style.display='none';bookOpenEditors.delete(id);const btn=document.querySelector(`.stub-edit-btn[data-id="${id}"]`);if(btn)btn.style.color='';}
+  // update displayed date without full re-render
   const ticket=document.querySelector(`.stub-ticket[data-id="${id}"]`);
   if(ticket){const d=ticket.querySelector('.stub-date');if(d)d.textContent=inp.value?fmtDate(inp.value):'date unknown';}
+  // re-render book to re-sort into correct month/year
+  renderBookPanel();
   await save(id,{watched_date:inp.value||null});toast('date updated ✓');
 });
 
@@ -594,6 +679,8 @@ $('modal-confirm').addEventListener('click',async()=>{
   const m=movies.find(x=>x.id===id);if(!m)return;
   m.watched=true;m.watched_date=dateVal;m.on_watchlist=false;
   render();
+  // refresh watchlist panel if open
+  if($('watchlist-panel').classList.contains('open')) renderWatchlistPanel();
   await save(id,{watched:true,watched_date:dateVal,on_watchlist:false});
   toast('added to ticket book ✓');
 });
@@ -727,7 +814,25 @@ function render(){
 
 // ── EVENTS ─────────────────────────────────────────────
 $('search').addEventListener('input',render);
-document.querySelectorAll('.sort-btn').forEach(b=>b.addEventListener('click',()=>{sortMode=b.dataset.sort;document.querySelectorAll('.sort-btn').forEach(x=>x.classList.toggle('active',x===b));render();}));
+
+// Sort dropdown
+const SORT_LABELS={'az':'A → Z','za':'Z → A','rating':'top rated','added':'recently added'};
+$('sort-toggle-btn').addEventListener('click',e=>{
+  e.stopPropagation();
+  const dd=$('sort-dropdown');
+  dd.style.display=dd.style.display==='none'?'block':'none';
+});
+document.querySelectorAll('.sort-opt').forEach(b=>b.addEventListener('click',()=>{
+  sortMode=b.dataset.sort;
+  document.querySelectorAll('.sort-opt').forEach(x=>x.classList.toggle('active',x===b));
+  $('sort-label').textContent=SORT_LABELS[sortMode];
+  $('sort-dropdown').style.display='none';
+  render();
+}));
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#sort-toggle-btn')&&!e.target.closest('#sort-dropdown'))
+    $('sort-dropdown').style.display='none';
+});
 document.querySelectorAll('[data-wf]').forEach(b=>b.addEventListener('click',()=>{watchFilter=b.dataset.wf;document.querySelectorAll('[data-wf]').forEach(x=>x.classList.toggle('active',x===b));render();}));
 $('tag-bar').addEventListener('click',e=>{const b=e.target.closest('[data-tag]');if(!b)return;const t=b.dataset.tag;tagFilters.has(t)?tagFilters.delete(t):tagFilters.add(t);renderTagBar();render();});
 
@@ -755,6 +860,14 @@ $('grid').addEventListener('click',async e=>{
 $('grid').addEventListener('mouseover',e=>{const el=e.target.closest('.sh')||e.target.closest('.sf');if(!el)return;const v=parseFloat(el.dataset.v);const stars=el.closest('.stars');if(!stars)return;refreshStars(parseInt(stars.dataset.mid),v);});
 $('grid').addEventListener('mouseout',e=>{const el=e.target.closest('.sh')||e.target.closest('.sf');if(!el)return;const stars=el.closest('.stars');if(!stars)return;const mid=parseInt(stars.dataset.mid);const m=movies.find(x=>x.id===mid);if(m)refreshStars(mid,m.rating);});
 $('grid').addEventListener('change',async e=>{const el=e.target,id=parseInt(el.dataset.id),f=el.dataset.f;const m=movies.find(x=>x.id===id);if(!m||!f)return;m[f]=el.value;if(f!=='note')render();await save(id,{[f]:el.value});});
+
+// ── ADD TOGGLE ─────────────────────────────────────────
+$('add-toggle-btn').addEventListener('click',()=>{
+  const inline=$('add-inline');
+  const isOpen=inline.style.display!=='none';
+  if(isOpen){inline.style.display='none';closeDropdown();$('add-title').value='';}
+  else{inline.style.display='block';setTimeout(()=>$('add-title').focus(),50);}
+});
 
 // ── ADD MOVIE — live TMDb search dropdown ──────────────
 let ddTimer=null;
@@ -824,16 +937,22 @@ $('add-dropdown').addEventListener('click',async e=>{
   if(m){
     if(poster){m.poster=poster;m.imdb=imdbVal||'';m.year=year;save(m.id,{poster,imdb:imdbVal||'',year});cache[ck(fullTitle)]={poster,imdb:imdbVal,year};}
     movies.push(m);
-    sortMode='added';
-    document.querySelectorAll('.sort-btn').forEach(b=>b.classList.toggle('active',b.dataset.sort==='added'));
+    $('add-inline').style.display='none';
     render();
     toast(`"${fullTitle}" added ✓`);
   }
 });
 
 // Close dropdown when clicking outside
-document.addEventListener('click',e=>{if(!e.target.closest('.add-section-top'))closeDropdown();});
-$('add-title').addEventListener('keydown',e=>{if(e.key==='Escape')closeDropdown();});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#add-inline')&&!e.target.closest('#add-toggle-btn')){
+    closeDropdown();
+    if($('add-title').value==='') $('add-inline').style.display='none';
+  }
+});
+$('add-title').addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeDropdown();$('add-title').value='';$('add-inline').style.display='none';}
+});
 
 $('import-btn').addEventListener('click',async()=>{
   const raw=$('io-box').value.trim();if(!raw)return;
